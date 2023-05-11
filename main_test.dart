@@ -2,12 +2,12 @@ void functionOne() {
   print("Started F01");
    try {
       functionTwo();
-    } on FormatException catch (e){
-      print("Problema de conversão foi capturado na FunctionOne");
-      print("Source: ${e.source}");
-      print("Message: ${e.message}");
-    } on Exception catch (e) {
-      print(e.toString());
+    } catch (exception, stackTrace) {
+      print(exception);
+      print(stackTrace); // rastreamento da pilha do erro
+      rethrow; // propaga o erro capturado para a chamada mais abaixo na pilha
+    } finally {
+      print("Chegou no finally");
     }
   print("Finished F01");
 }
@@ -23,6 +23,10 @@ void functionTwo() {
 
 void main(List<String> args) {
   print("Started main");
-  functionOne();
+  try {
+    functionOne();
+  } catch (e) {
+    print("Tratando erro da FunctionOne na main");
+  }
   print("Finished main");
 }
