@@ -29,6 +29,12 @@ void main() {
   } on ReceiverIdInvalidException catch (e) {
     print(e);
     print("O id ${e.idReceiver} do destinatário não é um id válido");
+  } on SenderNotAuthenticatedException catch (e) {
+    print(e);
+    print("O usuário remetente de id ${e.idSender} não está autenticado");
+  } on ReceiverNotAuthenticatedException catch (e){
+    print(e);
+    print("O usuário destinatário de id ${e.idReceiver} não está autenticado");
   } on SenderInsufficientFundsException catch(e) {
     print(e);
     print("O usuário de id ${e.idSender} tentou enviar ${e.amount} sendo que na sua conta em apenas ${e.balance}");

@@ -10,8 +10,8 @@ class SenderException implements Exception {
 }
 
 class ReceiverException implements Exception {
-  String idReceiver;
-  String report;
+  final String idReceiver;
+  final String report;
   ReceiverException(this.idReceiver, this.report);
 
   @override
@@ -28,6 +28,10 @@ class ReceiverIdInvalidException extends ReceiverException{
 }
 class SenderNotAuthenticatedException extends SenderException{
   SenderNotAuthenticatedException({required String idSender}) : super(idSender, "SenderNotAuthenticatedException");
+}
+
+class ReceiverNotAuthenticatedException extends ReceiverException{
+  ReceiverNotAuthenticatedException({required String idReceiver}) : super(idReceiver, "ReceiverNotAuthenticatedException");
 }
 
 class SenderInsufficientFundsException extends SenderException{
