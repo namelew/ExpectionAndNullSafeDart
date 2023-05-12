@@ -2,6 +2,7 @@ class Account {
   String name;
   double balance;
   bool isAuthenticated;
+  DateTime? createdAt;
 
   Account(
       {required this.name,
