@@ -5,22 +5,18 @@ import 'exceptions/bank_controller_exceptions.dart';
 import 'models/account.dart';
 
 void testingNullSafety() {
-  Account? MyAccount = Account(name: "Ricarth", balance: 200, isAuthenticated: true);
+  Account myAccount = Account(name: "Ricarth", balance: 200, isAuthenticated: true);
 
   Random rng = Random();
   int randomNumber = rng.nextInt(10);
 
   if (randomNumber <= 5) {
-    MyAccount.createdAt = DateTime.now();
+    myAccount.createdAt = DateTime.now();
   }
-
-  if (MyAccount != null) {
-    print(MyAccount.balance);
-    if (MyAccount.createdAt != null) {
-      print(MyAccount.createdAt!.day); // Nesse caso, não dá pra usar o ?, tem que testar se propriedade não é nula e usar o !
-    }
+  if (myAccount.createdAt != null) {
+      print(myAccount.createdAt!.day); // Nesse caso, não dá pra usar o ?, tem que testar se propriedade não é nula e usar o !
   } else {
-    print("Conta nula");
+    print("Propriedade nula");
   }
 }
 
