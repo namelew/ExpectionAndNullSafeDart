@@ -21,7 +21,7 @@ void functionTwo() {
   print("Finished F02");
 }
 
-void main(List<String> args) {
+void help(List<String> args) {
   print("Started main");
   try {
     functionOne();
